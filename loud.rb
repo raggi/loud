@@ -47,7 +47,7 @@ class VideoOnLoud < Stream
 
   def process(input, output, frameCount, timeInfo, statusFlags, userData)
     ints = input.read_array_of_uint8(frameCount)
-    louds = ints.select { |v| v > 250 }.inject(0, :+)
+    louds = ints.select { |v| v > 150 }.inject(0, :+)
 
     return :paContinue unless louds > 0
 
